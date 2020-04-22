@@ -6,10 +6,15 @@ function copy_to_clipboard(elem){
     document.execCommand('copy')
     copyElem.hide()
 }
-function generate_password(){
-    var domain = $('#domain').val()
-    var password = $('#password').val()
-    generated_password = domain + password
+
+function password_generator(domain, password){
+
+}
+
+function generate_password_button_handler(){
+    let domain = $('#domain').val()
+    let password = $('#password').val()
+    generated_password = encryption_arr_rotation(password, domain)
     console.log(generated_password)
     $('#generatedpassword').val(generated_password)
     $('#generatedpassword').show()
@@ -22,12 +27,15 @@ function initial_page_setup(){
 
 $( document ).ready(function() {
     initial_page_setup()
+
     $("#gen_button").click(function(event){
-        generate_password()
         event.preventDefault();
+        generate_password_button_handler()
     });
+
     $("#generatedpasswordcopydiv").click(function(){
         console.log($("#generatedpassword").val())
         copy_to_clipboard($("#generatedpassword"))
     });
+
 });
