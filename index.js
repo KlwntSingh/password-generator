@@ -12,7 +12,7 @@ function password_generator(domain, password){
 }
 
 function generate_password_button_handler(){
-    let domain = $('#domain').val()
+    let domain = $('#domain').val() //todo: sanitize domain to only have second level domain name i.e amazon, google
     let password = $('#password').val()
     generated_password = encryption_arr_rotation(password, domain)
     console.log(generated_password)
